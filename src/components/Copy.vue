@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { ref } from 'vue';
 
-const { Link, Name, PlatformsName, Description, Icon, IconFamily, SvgIcon } = defineProps<{
-    Link: string;
-    Name: string;
+const { Copy, PlatformsName, Description, Icon, IconFamily, SvgIcon } = defineProps<{
+    Copy: string;
     PlatformsName?: string;
     Description?: string;
     Icon?: string;
@@ -11,7 +11,6 @@ const { Link, Name, PlatformsName, Description, Icon, IconFamily, SvgIcon } = de
     SvgIcon?: string;
 }>();
 
-// 解析输入链接
 const SocialPlatforms = computed(() => {
     const platform = {
         platformsName: 'Unknown',
@@ -19,52 +18,6 @@ const SocialPlatforms = computed(() => {
         icon: 'square-full',
         isCustomSvgIcon: false
     };
-
-    if (Link.includes('github.com')) {
-        platform.platformsName = 'GitHub';
-        platform.iconfamily = 'fab';
-        platform.icon = 'square-github';
-    } else if (Link.includes('x.com')) {
-        platform.platformsName = 'X';
-        platform.iconfamily = 'fab';
-        platform.icon = 'square-x-twitter';
-    } else if (Link.includes('twitter.com')) {
-        platform.platformsName = 'Twitter';
-        platform.iconfamily = 'fab';
-        platform.icon = 'twitter';
-    } else if (Link.includes('bilibili.com')) {
-        platform.platformsName = 'BiliBili';
-        platform.iconfamily = 'fab';
-        platform.icon = 'bilibili';
-    } else if (Link.includes('instagram.com')) {
-        platform.platformsName = 'Instagram';
-        platform.iconfamily = 'fab';
-        platform.icon = 'square-instagram';
-    } else if (Link.includes('threads.net')) {
-        platform.platformsName = 'Threads';
-        platform.iconfamily = 'fab';
-        platform.icon = 'square-threads';
-    } else if (Link.includes('weibo.com')) {
-        platform.platformsName = 'Weibo';
-        platform.iconfamily = 'fab';
-        platform.icon = 'weibo';
-    } else if (Link.includes('steamcommunity.com')) {
-        platform.platformsName = 'Steam';
-        platform.iconfamily = 'fab';
-        platform.icon = 'square-steam';
-    } else if (Link.includes('facebook.com')) {
-        platform.platformsName = 'Facebook';
-        platform.iconfamily = 'fab';
-        platform.icon = 'square-facebook';
-    } else if (Link.includes('douyin.com') || Link.includes('tiktok.com')) {
-        if (Link.includes('douyin.com')) {
-            platform.platformsName = 'Douyin';
-        } else if (Link.includes('tiktok.com')) {
-            platform.platformsName = 'Tiktok';
-        }
-        platform.iconfamily = 'fab';
-        platform.icon = 'tiktok';
-    }
 
     if (PlatformsName) {
         platform.platformsName = PlatformsName;
@@ -82,14 +35,22 @@ const SocialPlatforms = computed(() => {
     return platform;
 });
 
-const openLink = () => {
-    window.open(Link, '_blank');
-};
+const copiedRef = ref(false);
+function copyLink() {
+    navigator.clipboard.writeText(Copy).then(() => {
+        copiedRef.value = true;
+        setTimeout(() => {
+            copiedRef.value = false;
+        }, 2000);
+    }).catch(err => {
+        console.error('拷贝失败: ', err);
+    });
+}
 </script>
 
 <template>
     <div class="main-box">
-        <el-button class="button" plain @click="openLink">
+        <el-button class="button" plain @click="copyLink">
             <div class="SocialIcon">
                 <template v-if="SocialPlatforms.isCustomSvgIcon">
                     <div class="custom-svg" v-html="SocialPlatforms.icon"></div>
@@ -99,11 +60,14 @@ const openLink = () => {
                 </template>
             </div>
             <div class="SocialDetail">
-                <div class="SocialDetail-inner"><b>{{ SocialPlatforms.platformsName }}</b></div>
-                <div class="SocialDetail-inner SocialDetail-name"><b>{{ Name }}</b></div>
+                <div class="SocialDetail-inner"><b>{{ PlatformsName }}</b></div>
+                <div class="SocialDetail-inner SocialDetail-name"><b>{{ Copy }}</b></div>
                 <div class="SocialDetail-inner SocialDetail-description">{{ Description }}</div>
             </div>
         </el-button>
+        <div v-if="copiedRef" class="copy-success-message">
+            <span>内容已复制！</span>
+        </div>
     </div>
 </template>
 
@@ -164,6 +128,50 @@ const openLink = () => {
 
 .el-button:hover {
     color: #e60012;
+}
+
+.copy-success-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* 初始设置为不可见 */
+    animation: slideInOut 2s ease-in-out forwards;
+}
+
+.copy-success-message span {
+    display: block;
+    text-align: center;
+}
+
+
+@keyframes slideInOut {
+    0% {
+        bottom: 20px;   /* 初始位置在下方 */
+        opacity: 0;      /* 初始不可见 */
+    }
+    15% {
+        bottom: 11em;    /* 顶端偏移，显示出来 */
+        opacity: 1;      /* 完全显示 */
+    }
+    20% {
+        bottom: 10em;    /* 顶端偏移，显示出来 */
+        opacity: 1;      /* 完全显示 */
+    }
+    80% {
+        bottom: 10em;    /* 保持在显示位置 */
+        opacity: 1;      /* 保持可见 */
+    }
+    100% {
+        bottom: 0px;     /* 向上飘出 */
+        opacity: 0;      /* 最终消失 */
+    }
 }
 
 @media screen and (max-width: 768px) {

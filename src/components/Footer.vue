@@ -17,20 +17,20 @@
 
 <style scoped>
 .footer-main {
-    font-size: 14px;
+    font-size: 1.2em;
     color: rgb(128, 128, 128);
     margin-bottom: .6em;
 }
 
 .footer-github {
-    font-size: 14px;
+    font-size: 1em;
     color: rgb(128, 128, 128);
     /* text-decoration: underline; */
     margin-bottom: .8em;
 }
 
 .footer-copyright {
-    font-size: 10px;
+    font-size: 1em;
     color: rgb(128, 128, 128);
 }
 

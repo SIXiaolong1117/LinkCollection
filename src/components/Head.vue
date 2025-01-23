@@ -11,4 +11,10 @@
 .head-main {
     font-size: 2em;
 }
+
+@media screen and (max-width: 768px) {
+    .head-main {
+        font-size: 4em;
+    }
+}
 </style>
