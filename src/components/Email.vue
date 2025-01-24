@@ -8,7 +8,7 @@ function emailto() {
 </script>
 
 <template>
-    <el-button round @click="emailto">E-mail</el-button>
+    <el-button round @click="emailto"><font-awesome-icon :icon="['fas', 'at']" />&nbsp;E-mail</el-button>
 </template>
 
 <style scoped>
