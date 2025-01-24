@@ -103,8 +103,6 @@ function copyLink() {
 }
 
 .copy-link-text {
-    width: 15em;
-    overflow-wrap: break-word;
     font-size: 1em;
     color: black;
 }
