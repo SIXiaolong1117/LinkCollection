@@ -35,6 +35,7 @@ const SocialPlatforms = computed(() => {
     return platform;
 });
 
+// 复制链接
 const copiedRef = ref(false);
 function copyLink() {
     navigator.clipboard.writeText(Copy).then(() => {
