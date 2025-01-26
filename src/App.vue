@@ -22,7 +22,7 @@ import Copy from './components/Copy.vue'
       <Email Email="email@sixiaolong.win" />
     </div>
 
-    <Link Link="https://myblog.sixiaolong.win/" Name="相逢在宇宙 0080" Description="我的个人博客" PlatformsName="Blog"
+    <Link Link="https://sixiaolong.win/" Name="相逢在宇宙 0080" Description="我的个人博客" PlatformsName="Blog"
       Icon="square-rss" IconFamily="fas" />
     <Link Link="https://github.com/SIXiaolong1117" Name="SI Xiaolong" Description="偶尔写点项目~" />
     <Link Link="https://x.com/SI_Xiaolong" Name="司晓龙 | 𝚂𝚒-𝚇𝚒𝚊𝚘 𝚕𝚘𝚘𝚗𝚐" Description="关注技术" />

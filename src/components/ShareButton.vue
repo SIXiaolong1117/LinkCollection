@@ -60,9 +60,9 @@ function copyLink() {
             <img class="qrcode-img" v-if="qrCodeDataUrl" :src="qrCodeDataUrl" alt="QR Code" />
             <el-button link class="copy-link" @click="copyLink">
                 <div class="copy-link-text">
-                    <div class="copy-link-text-link">
+                    <el-text id="copy-link-text-link-line" class="copy-link-text-link" truncated>
                         {{ currentUrl }}
-                    </div>
+                    </el-text>
                     <div class="copy-link-text-copy"><font-awesome-icon :icon="['fas', 'copy']" />&nbsp;复制链接
                     </div>
                 </div>
@@ -88,7 +88,7 @@ function copyLink() {
     color: rgb(255, 255, 255);
 }
 
-.share-button-text{
+.share-button-text {
     font-size: 1.2em;
 }
 
@@ -105,6 +105,10 @@ function copyLink() {
 .copy-link-text {
     font-size: 1em;
     color: black;
+}
+
+#copy-link-text-link-line{
+    width: 15em;
 }
 
 .copy-link-text-copy {
