@@ -31,7 +31,7 @@ const SocialPlatforms = computed(() => {
     } else if (Link.includes('twitter.com')) {
         platform.platformsName = 'Twitter';
         platform.iconfamily = 'fab';
-        platform.icon = 'twitter';
+        platform.icon = 'x-twitter';
     } else if (Link.includes('bilibili.com')) {
         platform.platformsName = 'BiliBili';
         platform.iconfamily = 'fab';
@@ -146,6 +146,7 @@ const openLink = () => {
     justify-content: flex-start;
     margin-top: 2px;
     margin-bottom: 2px;
+    font-size: 14px;
 }
 
 .SocialDetail-name {
@@ -159,7 +160,7 @@ const openLink = () => {
 
 .el-button {
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .el-button:hover {

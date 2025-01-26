@@ -141,7 +141,7 @@ function copyLink() {
     top: 2em;
     right: 2em;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     background-color: rgba(255, 255, 255, 0.5);
     border: #00000000;
 }
