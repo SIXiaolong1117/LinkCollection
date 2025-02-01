@@ -7,7 +7,7 @@ import Head from './components/Head.vue'
 import ShareButton from './components/ShareButton.vue'
 import Email from './components/Email.vue'
 import VideoBackground from './components/VideoBackground.vue'
-import Copy from './components/Copy.vue'
+// import Copy from './components/Copy.vue'
 </script>
 
 <template>
