@@ -3,8 +3,11 @@
 
 <template>
     <video class="video-background" autoplay loop muted playsinline>
-        <source
+        <!-- <source
             src="https://cdn.fastly.steamstatic.com/steamcommunity/public/images/items/2861720/85882f90ad8ca69467610883a9fa95ecc2f071ab.webm"
+            type="video/webm" /> -->
+        <source
+            src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/1263950/4d466f77edf3265a253fba79d47bc91a37e34920.webm"
             type="video/webm" />
         Your browser does not support the video tag.
     </video>
