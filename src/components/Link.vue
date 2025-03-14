@@ -56,10 +56,14 @@ const SocialPlatforms = computed(() => {
         platform.platformsName = 'Facebook';
         platform.iconfamily = 'fab';
         platform.icon = 'square-facebook';
-    }else if (Link.includes('zhihu.com')) {
+    } else if (Link.includes('zhihu.com')) {
         platform.platformsName = 'Zhihu';
         platform.iconfamily = 'fab';
         platform.icon = 'zhihu';
+    } else if (Link.includes('makerworld.com.cn')) {
+        platform.platformsName = 'MakerWorld (中国大陆)';
+    } else if (Link.includes('makerworld.com')) {
+        platform.platformsName = 'MakerWorld (全球站)';
     } else if (Link.includes('douyin.com') || Link.includes('tiktok.com')) {
         if (Link.includes('douyin.com')) {
             platform.platformsName = 'Douyin';
